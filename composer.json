@@ -1,5 +1,5 @@
 {
-	"name" : "Braga/ProjectTemplate",
+	"name" : "braga/project-template",
 	"description" : "Teplate projektu dla frameworku Braga",
 	"type" : "project",
 	"license" : "MIT",
