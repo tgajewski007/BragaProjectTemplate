@@ -22,7 +22,7 @@ class InteriorSsoPerms
 	private static $instance = null;
 	// -----------------------------------------------------------------------------------------------------------------
 	/**
-	 * @var Token
+	 * @var \Lcobucci\JWT\Token
 	 */
 	private $jwt;
 	// -----------------------------------------------------------------------------------------------------------------
@@ -130,7 +130,7 @@ class InteriorSsoPerms
 				return $matches[1];
 			}
 		}
-		throw new \Exception("BP:90205 Brak tokneu w nagłówku", 90305);
+		throw new \Exception("BP:90205 Brak tokenu w nagłówku", 90305);
 	}
 	// -----------------------------------------------------------------------------------------------------------------
 	protected static function getAuthorizationHeader()
