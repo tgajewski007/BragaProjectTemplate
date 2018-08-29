@@ -1,12 +1,11 @@
 <?php
 namespace braga\project\base;
 use Lcobucci\JWT\Parser;
-use Lcobucci\JWT\Token;
 use Lcobucci\JWT\ValidationData;
 use Lcobucci\JWT\Signer\Key;
 use Lcobucci\JWT\Signer\Rsa\Sha256;
 use Lcobucci\JWT\Signer\Rsa\Sha512;
-use braga\piechockiesb\config\Config;
+use braga\project\config\Config;
 
 /**
  * Created on 22 lip 2018 11:04:05
@@ -95,7 +94,7 @@ class InteriorSsoPerms
 				}
 				else
 				{
-					throw new \Exception("ESB:90301 Nieobsugiwany algorytm weryfikacji tokenu", 90301);
+					throw new \Exception("BP:90201 Nieobsugiwany algorytm weryfikacji tokenu", 90301);
 				}
 				$key = new Key(KeyStore::get($token->getHeader("kod"))->getPublicKey());
 
@@ -105,17 +104,17 @@ class InteriorSsoPerms
 				}
 				else
 				{
-					throw new \Exception("ESB:90302 Błąd veryfikacji tokenu", 90302);
+					throw new \Exception("BP:90202 Błąd veryfikacji tokenu", 90302);
 				}
 			}
 			else
 			{
-				throw new \Exception("ESB:90303 Błąd veryfikacji tokenu", 90303);
+				throw new \Exception("BP:90203 Błąd veryfikacji tokenu", 90303);
 			}
 		}
 		else
 		{
-			throw new \Exception("ESB:90304 Niewłaściwy typ tokenu", 90304);
+			throw new \Exception("BP:90204 Niewłaściwy typ tokenu", 90304);
 		}
 	}
 	// -----------------------------------------------------------------------------------------------------------------
@@ -131,7 +130,7 @@ class InteriorSsoPerms
 				return $matches[1];
 			}
 		}
-		throw new \Exception("ESB:90305 Brak tokneu w nagłówku", 90305);
+		throw new \Exception("BP:90205 Brak tokneu w nagłówku", 90305);
 	}
 	// -----------------------------------------------------------------------------------------------------------------
 	protected static function getAuthorizationHeader()
@@ -158,7 +157,7 @@ class InteriorSsoPerms
 				}
 			}
 		}
-		throw new \Exception("ESB:90306 Brak nagłówka Authorization", 90306);
+		throw new \Exception("BP:90206 Brak nagłówka Authorization", 90306);
 	}
 	// -----------------------------------------------------------------------------------------------------------------
 	public static function pageOpen()
@@ -166,7 +165,4 @@ class InteriorSsoPerms
 		InteriorSsoPerms::getInstance()->check();
 	}
 	// -----------------------------------------------------------------------------------------------------------------
-}
-class Config
-{
 }
