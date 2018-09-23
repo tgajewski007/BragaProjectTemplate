@@ -20,7 +20,8 @@
 		"ext-mbstring" : "*",
 		"ext-PDO" : "*",
 		"ext-pdo_mysql" : "*",
-		"ext-mysqli" : "*"
+		"ext-mysqli" : "*",
+		"braga/widgets" : "~2.3"
 	},
 	"require-dev" : {
 		"braga/dao-generator" : "~2.5"
