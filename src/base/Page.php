@@ -13,7 +13,7 @@ class Page
 	// -----------------------------------------------------------------------------------------------------------------
 	protected static function getHead()
 	{
-		$title = "WfMag To Jpk Converter";
+		$title = "System";
 		$title .= " ver: " . Config::getVersion();
 		$retval = Tags::meta("http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"");
 		$retval = Tags::meta("name=\"viewport\" content=\"width=device-width, initial-scale=1\"");
