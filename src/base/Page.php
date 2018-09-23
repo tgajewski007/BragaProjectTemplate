@@ -74,6 +74,7 @@ class Page
 		if(!headers_sent())
 		{
 			self::sendHttpHeaders();
+			$bodyContent = Tags::div($bodyContent, "id='Workspace'");
 			$page = self::getHead() . Tags::body($bodyContent, "id='Body' onselectstart='return false;' unselectable='on' ");
 			$page = Tags::html($page);
 			$page = self::getDocType() . $page;
