@@ -1,5 +1,9 @@
 <?php
-namespace braga\project\controllers;
+namespace braga\project\controller;
+use Monolog\Logger;
+use braga\project\utils\logger\MainLogger;
+use braga\tools\api\BaseRestController;
+use braga\tools\tools\RequstUrl;
 
 /**
  * Created on 6 paź 2017 18:05:43
@@ -7,18 +11,23 @@ namespace braga\project\controllers;
  * package controllers
  * error prefix CB:291
  */
-class SuperController
+class SuperController extends BaseRestController
 {
 	// -----------------------------------------------------------------------------------------------------------------
 	public function doAction()
 	{
-		$idModul = null;
-		if(isset($_REQUEST["modul"]))
+		$this->setLoggerClassNama(MainLogger::class);
+		try
 		{
-			$idModul = $_REQUEST["modul"];
+			$modul = RequstUrl::get(1);
+			switch($modul)
+			{
+			}
 		}
-		switch($idModul)
+		catch(\Throwable $e)
 		{
+			$this->sendError($e);
+			MainLogger::exception($e, Logger::ERROR);
 		}
 	}
 	// -----------------------------------------------------------------------------------------------------------------

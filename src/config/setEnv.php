@@ -1,5 +1,5 @@
 <?php
-
+namespace braga\project\config;
 /**
  * Created on 22 sty 2018 10:39:20
  * error prefix
@@ -7,6 +7,11 @@
  * @package
  *
  */
+use braga\graylogger\Factory;
+use braga\graylogger\GrayLoggerConfig;
+use braga\project\utils\logger\HttpParamLogger;
+use braga\project\utils\logger\PHPLogger;
+use braga\tools\tools\PostChecker;
 mb_internal_encoding("utf8");
 ini_set("max_execution_time", "1800");
 date_default_timezone_set("Europe/Warsaw");
@@ -26,6 +31,13 @@ define("PHP_DATE_FORMAT", "Y-m-d");
 define("PHP_TIME_FORMAT", "H:i:s");
 define("PHP_DATETIME_FORMAT", PHP_DATE_FORMAT . " " . PHP_TIME_FORMAT);
 
-Logger::configure(\braga\project\config\Config::getLog4PhpConfigFile());
-set_error_handler("\\braga\\project\\utils\\ErrorHandler::errorHandler");
-set_exception_handler("\\braga\\project\\utils\\ErrorHandler::exceptionHandler");
+Factory::setStartupConfig(new GrayLoggerConfig("CB", Config::getGelfHost(), Config::getGelfPort(), Config::getLogLevel(), Config::getLogFile()));
+
+PostChecker::setLogger(new HttpParamLogger());
+
+set_error_handler([
+				PHPLogger::class,
+				"handleError" ]);
+set_exception_handler([
+				PHPLogger::class,
+				"handleException" ]);

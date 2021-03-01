@@ -1,8 +1,8 @@
 RewriteEngine on
+RewriteRule ^\.well-known\/acme-challenge\/ - [L] # then exclude acme challenge urls from rewriting
 
 RewriteRule ^css/(.*)$ css/$1 [L]
 RewriteRule ^img/(.*)$ img/$1 [L]
 RewriteRule ^js/(.*)$ js/$1 [L]
 
-RewriteRule ^([^/]+)/([^/]+)/$ index.php?serice_name=$1&action=$2&%{QUERY_STRING} [L]
-RewriteRule ^([^/]+)/$ index.php?serice_name=$1&%{QUERY_STRING} [L]
+RewriteRule .* index.php [L]

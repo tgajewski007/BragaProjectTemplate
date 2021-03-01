@@ -66,9 +66,24 @@ class Config
 		return self::getEnviromentVariable("ISSUERREALMS");
 	}
 	// -----------------------------------------------------------------------------------------------------------------
-	public static function getLog4PhpConfigFile()
+	public static function getGelfHost()
 	{
-		return self::getEnviromentVariable("LOG4PHPCONFIGFILE");
+		return self::getEnviromentVariable("GELF_HOST");
+	}
+	// -----------------------------------------------------------------------------------------------------------------
+	public static function getGelfPort()
+	{
+		return self::getEnviromentVariable("GELF_PORT");
+	}
+	// -----------------------------------------------------------------------------------------------------------------
+	public static function getLogLevel()
+	{
+		return (int)self::getEnviromentVariable("LOG_LEVEL");
+	}
+	// -----------------------------------------------------------------------------------------------------------------
+	public static function getLogFile()
+	{
+		return self::getEnviromentVariable("LOG_FILE");
 	}
 	// -----------------------------------------------------------------------------------------------------------------
 }

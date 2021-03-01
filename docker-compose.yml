@@ -34,7 +34,6 @@ services:
             DBSCHEMA: project
             DBUSER: project
             DBCONNECTIONSTRING: mysql:host=db
-            LOG4PHPCONFIGFILE: /var/www/config/loggerConfig.xml
             TZ: Europe/Warsaw
             VERSION: 1.0.0   
         ports:

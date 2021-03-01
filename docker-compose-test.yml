@@ -34,14 +34,12 @@ services:
             DBSCHEMA: project
             DBUSER: project
             DBCONNECTIONSTRING: mysql:host=db
-            LOG4PHPCONFIGFILE: /var/www/config/loggerConfig.xml
             TZ: Europe/Warsaw
             VERSION: 1.0.0   
         ports:
           - '80:80'
         restart: always
         volumes:
-          - change-me-app-log:/var/www/log
           - change-me-app-config:/var/www/config
         networks:
           - change-me-network
@@ -50,7 +48,6 @@ services:
 networks:
     change-me-network:
 volumes: 
-    change-me-app-log:  
     change-me-app-config:   
     change-me-db-data:
     change-me-db-config: 
